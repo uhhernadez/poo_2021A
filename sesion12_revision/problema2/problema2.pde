@@ -1,3 +1,8 @@
+float diametro = 10;
+float dd = 3;
+boolean crecer = true;
+
+
 void setup()
 {
   size(300, 300);
@@ -5,32 +10,28 @@ void setup()
 
 void draw()
 {
-  background(50);
-  circulo(75, 75, 30);
-  circulo(75, 150, 30);
-  circulo(75, 225, 30);
+  background(40);
+  fill(255);
+  circle(width/2, height/2, diametro);
   
-  circulo(150, 75, 30);
-  circulo(150, 150, 30);
-  circulo(150, 225, 30);
-  
-  circulo(225, 75, 30);
-  circulo(225, 150, 30);
-  circulo(225, 225, 30);
-}
-
-
-void circulo(float x, float y, float r)
-{
-  fill(34,43,56);
-  
-  if(x-r < mouseX &&  mouseX < x+r) 
+  if(crecer) 
   {
-    if(y-r < mouseY &&  mouseY < y+r )
+    diametro = diametro + dd;
+    
+    if(diametro >= width)
     {
-      fill(244, 0, 0);
+      crecer = false;
     }
   }
-  
-  circle(x, y, 2*r);
+  else 
+  {
+    diametro = diametro - dd;
+    
+    if(diametro <= 0)
+    {
+      crecer = true;
+    }
+  }
+  fill(255, 0, 0);
+  //text(diametro, width/2, height/2);
 }
